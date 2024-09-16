@@ -5,7 +5,7 @@
 int main(int argc, char **argv) {
 
   if (argc != 4) {
-    fprintf(stderr, "Usage: %s [matrix size] [matrix A seed] [matrix B seed]",
+    fprintf(stderr, "Usage: %s [matrix size] [matrix A seed] [matrix B seed]\n",
             argv[0]);
     return 1;
   }
