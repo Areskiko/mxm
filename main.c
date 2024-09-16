@@ -24,7 +24,9 @@ int main(int argc, char **argv) {
  	B[i] = i * atoi(argv[3]) % 1024;
   }
 
-  int *C = mxm(A, B);
+  int *C = mxm(A, B, M);
+
+  fprintf(stdout, "First element in C: %d", C[0]);
 
   return 0;
 }
