@@ -7,32 +7,55 @@
 #include <stdio.h>
 #endif
 
+#include <stdint.h>
+#include <stdlib.h>
+
+#define BLOCK_SIZE 8
+
+_Alignas(64) int localA[BLOCK_SIZE][BLOCK_SIZE];
+_Alignas(64) int localB[BLOCK_SIZE][BLOCK_SIZE];
+_Alignas(64) int localC[BLOCK_SIZE][BLOCK_SIZE];
+
 DATA_TYPE *mxm(DATA_TYPE *A, DATA_TYPE *B, HEADER_TYPE N) {
+  int blockNum = N / BLOCK_SIZE;
   DATA_TYPE *C = calloc(N * N, sizeof(DATA_TYPE));
-  for (uint64_t i = 0; i < N; i++) {
-    for (uint64_t j = 0; j < N; j++) {
 
-      uint64_t c_index = i * N + j;
-      C[c_index] = 0;
-#ifdef PRINT_MATH
-        printf("\n\nOperating on C[%llu]\n", c_index);
-#endif
+// Traverse blocks.
+#pragma omp parallel for
+  for (size_t bi = 0; bi < blockNum; bi++) {
+    for (size_t bj = 0; bj < blockNum; bj++) {
+      for (size_t bk = 0; bk < blockNum; bk++) {
+        // Copy local block.
+        for (size_t i = 0; i < BLOCK_SIZE; i++) {
+          for (size_t j = 0; j < BLOCK_SIZE; j++) {
+            size_t aIdx = bi * BLOCK_SIZE * blockNum * BLOCK_SIZE +
+                          i * blockNum * BLOCK_SIZE + bk * BLOCK_SIZE + j;
+            size_t bIdx = bk * BLOCK_SIZE * blockNum * BLOCK_SIZE +
+                          i * blockNum * BLOCK_SIZE + bj * BLOCK_SIZE + j;
+            localA[i][j] = A[aIdx];
+            localB[i][j] = B[bIdx];
+          }
+        }
 
-      for (uint64_t k = 0; k < N; k++) {
-
-        uint64_t a_index = i * N + k;
-        uint64_t b_index = k * N + j;
-        DATA_TYPE a = A[a_index];
-        DATA_TYPE b = B[b_index];
-        DATA_TYPE c = C[c_index];
-#ifdef PRINT_MATH
-        printf("Multiplying A[%llu]: %llu and B[%llu]: %llu (=%llu) and adding to C[%llu]: %llu (=%llu)\n", a_index, a, b_index, b, a*b, c_index, c, a*b+c);
-#endif
-        C[c_index] = a * b + c;
+        // Block GEMM.
+        for (size_t i = 0; i < BLOCK_SIZE; i++) {
+          for (size_t k = 0; k < BLOCK_SIZE; k++) {
+#pragma omp simd
+            for (size_t j = 0; j < BLOCK_SIZE; j++) {
+              localC[i][j] += localA[i][k] * localB[k][j];
+            }
+          }
+        }
       }
-#ifdef PRINT_MATH
-        printf("C[%llu] = %llu\n", c_index, C[c_index]);
-#endif
+
+      // Copy localC back.
+      for (size_t i = 0; i < BLOCK_SIZE; i++) {
+        for (size_t j = 0; j < BLOCK_SIZE; j++) {
+          size_t cIdx = bi * BLOCK_SIZE * blockNum * BLOCK_SIZE +
+                        i * blockNum * BLOCK_SIZE + bj * BLOCK_SIZE + j;
+          C[cIdx] = localC[i][j];
+        }
+      }
     }
   }
   return C;
