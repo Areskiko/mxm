@@ -8,3 +8,4 @@ data
 out.dat
 *.diff
 out
+*.so
