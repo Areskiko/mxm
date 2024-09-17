@@ -3,7 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define NUMBER 1
+
 int main(int argc, char **argv) {
+
+  printf("N: %d\n", NUMBER);
 
   if (argc != 4) {
     fprintf(stderr, "Usage: %s matrixA matrixB matrixC\n", argv[0]);
