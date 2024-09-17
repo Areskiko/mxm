@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
 
   int *C = mxm(A, B, M);
 
-  fprintf(stdout, "First element in C: %d", C[0]);
+  fprintf(stdout, "First element in C: %d\n", C[0]);
 
   return 0;
 }
