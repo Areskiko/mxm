@@ -2,10 +2,10 @@ sizes := 2 4 8 16 32 64 128 256 512 1024 2048 4096 # 8192 16384 32768
 data_dir := data
 
 main: main.c mxm.c mxm.h sizes.h
-	$(CC) -o main main.c mxm.c -O3
+	$(CC) -o main main.c -O3
 
 maind: main.c mxm.c mxm.h sizes.h
-	$(CC) -g -o maind main.c mxm.c
+	$(CC) -g -o maind main.c
 
 matrix_gen: matrix_gen.c sizes.h
 	$(CC) -o matrix_gen matrix_gen.c -O3
