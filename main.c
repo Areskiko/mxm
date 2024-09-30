@@ -58,7 +58,7 @@
 #endif
 
   char *cmd = malloc(CMD_LENGTH * sizeof(char));
-  sprintf(cmd, "clang --shared -o libmxm.so mxm.c -DN=%d", na);
+  sprintf(cmd, "clang --shared -O3 -o libmxm.so mxm.c -DN=%d", na);
   if (system(cmd)) {
     fprintf(stderr, "Failed to invoke compiler");
     free(A);
