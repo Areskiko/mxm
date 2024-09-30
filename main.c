@@ -17,7 +17,6 @@ int main(int argc, char **argv) {
   uint32_t na, nb;
   fread(&na, sizeof(uint32_t), 1, fa);
   fread(&nb, sizeof(uint32_t), 1, fb);
-  printf("Size: %d", na);
 
   if (na != nb) {
     fprintf(stderr, "Matrices are of different sizes: %u and %u", na, nb);
