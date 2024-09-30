@@ -1,9 +1,13 @@
 #include "mxm.h"
 #include "sizes.h"
+#include <dlfcn.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv) {
+#define CMD_LENGTH 256
+
+    int
+    main(int argc, char **argv) {
 
   if (argc != 4) {
     fprintf(stderr, "Usage: %s matrixA matrixB matrixC\n", argv[0]);
@@ -53,7 +57,20 @@ int main(int argc, char **argv) {
   printf("\n");
 #endif
 
-  DATA_TYPE *C = mxm(A, B);
+  char *cmd = malloc(CMD_LENGTH * sizeof(char));
+  sprintf(cmd, "clang --shared -o libmxm.so mxm.c -DN=%d", na);
+  if (system(cmd)) {
+    fprintf(stderr, "Failed to invoke compiler");
+    free(A);
+    free(B);
+    return 1;
+  }
+
+  void *libmxm = dlopen("libmxm.so", RTLD_NOW);
+  mxm_func dyn_mxm = dlsym(libmxm, "mxm");
+
+  DATA_TYPE *C = (*dyn_mxm)(A, B);
+  dlclose(libmxm);
 
 #ifdef PRINT_MATRIX
   printf("Matrix C:\n");
