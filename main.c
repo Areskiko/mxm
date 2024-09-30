@@ -3,7 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <dlfcn.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 //#define PRINT_MATRIX
+
+#define CMD_LENGTH 256
 
 int main(int argc, char **argv) {
 
@@ -55,7 +61,21 @@ int main(int argc, char **argv) {
   printf("\n");
 #endif
 
-  DATA_TYPE *C = mxm(A, B, na);
+
+  char *cmd = malloc(CMD_LENGTH * sizeof(char));
+  sprintf(cmd, "clang --shared -o libmxm.so mxm.c -DN=%llu", na);
+  if (system(cmd)) {
+    fprintf(stderr, "Failed to invoke compiler");
+    free(A);
+    free(B);
+    return 1;
+  }
+
+  void *libmxm = dlopen("libmxm.so", RTLD_NOW);
+  mxm_func dyn_mxm = dlsym(libmxm, "mxm");
+
+  DATA_TYPE *C = (*dyn_mxm)(A, B);
+  dlclose(libmxm);
 
 #ifdef PRINT_MATRIX
   printf("Matrix C:\n");

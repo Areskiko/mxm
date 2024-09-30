@@ -5,5 +5,6 @@
 #include <stdint.h>
 #include "sizes.h"
 DATA_TYPE* mxm(DATA_TYPE*, DATA_TYPE*);
+typedef DATA_TYPE* (*mxm_func)(DATA_TYPE*, DATA_TYPE*);
 
 #endif
