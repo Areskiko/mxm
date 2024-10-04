@@ -1,5 +1,5 @@
 #include "mxm.h"
-#include <stdint.h>
+#include "sizes.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,32 +10,65 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  uint8_t *A, *B;
+  DATA_TYPE *A, *B;
 
   FILE *fa = fopen(argv[1], "r");
   FILE *fb = fopen(argv[2], "r");
-  uint32_t na, nb;
-  fread(&na, sizeof(uint32_t), 1, fa);
-  fread(&nb, sizeof(uint32_t), 1, fb);
+  HEADER_TYPE na, nb;
+  fread(&na, sizeof(HEADER_TYPE), 1, fa);
+  fread(&nb, sizeof(HEADER_TYPE), 1, fb);
 
   if (na != nb) {
-    fprintf(stderr, "Matrices are of different sizes: %u and %u", na, nb);
+    fprintf(stderr, "Matrices are of different sizes: %llu and %llu", na, nb);
     return 1;
   }
 
-  A = malloc(na * na * sizeof(uint8_t));
-  fread(A, sizeof(uint8_t), na * na, fa);
+  A = malloc(na * na * sizeof(DATA_TYPE));
+  fread(A, sizeof(DATA_TYPE), na * na, fa);
   fclose(fa);
 
-  B = malloc(nb * nb * sizeof(uint8_t));
-  fread(B, sizeof(uint8_t), nb * nb, fb);
+#ifdef PRINT_MATRIX
+  printf("Matrix A:\n");
+  for (int i = 0; i < na; i++) {
+    for (int j = 0; j < na; j++) {
+      printf("%llu\t", A[i * na + j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+#endif
+
+  B = malloc(nb * nb * sizeof(DATA_TYPE));
+  fread(B, sizeof(DATA_TYPE), nb * nb, fb);
   fclose(fb);
 
-  uint8_t *C = mxm(A, B, na);
+#ifdef PRINT_MATRIX
+  printf("Matrix B:\n");
+  for (int i = 0; i < nb; i++) {
+    for (int j = 0; j < nb; j++) {
+      printf("%llu\t", B[i * na + j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+#endif
+
+  DATA_TYPE *C = mxm(A, B, na);
+
+#ifdef PRINT_MATRIX
+  printf("Matrix C:\n");
+  for (int i = 0; i < nb; i++) {
+    for (int j = 0; j < nb; j++) {
+      printf("%llu\t", C[i * na + j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
+#endif
 
   FILE *fc = fopen(argv[3], "w");
-  fwrite(&na, sizeof(uint32_t), 1, fc);
-  fwrite(C, sizeof(uint8_t), na * na, fc);
+  fwrite(&na, sizeof(HEADER_TYPE), 1, fc);
+  fwrite(C, sizeof(DATA_TYPE), na * na, fc);
   fflush(fc);
 
   free(A);

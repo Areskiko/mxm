@@ -3,6 +3,7 @@
 
 // Carry out a M x M matrix multiplication
 #include <stdint.h>
-uint8_t* mxm(uint8_t*, uint8_t*, uint64_t);
+#include "sizes.h"
+DATA_TYPE* mxm(DATA_TYPE*, DATA_TYPE*, HEADER_TYPE);
 
 #endif

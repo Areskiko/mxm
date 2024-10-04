@@ -1,9 +1,12 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#include "sizes.h"
 
 #define SEED 2216
-#define SIZES 13
+#define SIZES 15
 #define BUFFER_SIZE 256
 #define MAX_VAL 256
 #define HEADER_SIZE 4
@@ -11,54 +14,51 @@
 
 int main(int argc, char **argv) {
 
-  if (argc < 2 || argc > 3) {
-    fprintf(stderr, "Usage: %s DATA_DIR_PATH [ident]", argv[0]);
+  if (argc < 3 || argc > 4) {
+    fprintf(stderr, "Usage: %s DATA_FILE_PATH SIZE [ident]", argv[0]);
     return 1;
   }
 
+  size_t ident = 0;
+  if (argc == 4) {
+    ident = !strncmp(argv[3], "ident", 5);
+  }
+
   srand(SEED);
-  uint64_t sizes[SIZES] = {2,    4,    8,    16,   128,   256,  512,
-                           1024, 2048, 4096, 8192, 16384, 32768};
 
   FILE *f;
-  char *file_name = malloc(FILENAME_LENGTH);
-  uint8_t buff[BUFFER_SIZE] = {0};
+  DATA_TYPE buff[BUFFER_SIZE] = {0};
+  uint64_t size = atoi(argv[2]);
 
-  for (size_t i = 0; i < SIZES; i++) {
-    if (argc == 2) {
-      snprintf(file_name, FILENAME_LENGTH, "%s/%llu.dat", argv[1], sizes[i]);
-    } else {
-      snprintf(file_name, FILENAME_LENGTH, "%s/%llu.ident.dat", argv[1],
-               sizes[i]);
-    }
-    f = fopen(file_name, "w");
+  f = fopen(argv[1], "w");
 
-    fwrite(&sizes[i], sizeof(uint64_t), 1, f);
+  fwrite(&size, sizeof(HEADER_TYPE), 1, f);
 
-    size_t j;
-    int k = 0;
-    for (j = 0; j < sizes[i] * sizes[i]; j++) {
-      if (argc == 3) {
-        if (j % (sizes[i] + k) == 0) {
-          buff[j % BUFFER_SIZE] = 1;
-          k++;
+  HEADER_TYPE i, j, idx;
+  for (i = 0; i < size; i++) {
+    for (j = 0; j < size; j++) {
+      idx = i * size + j;
+      if (ident) {
+        if (j == i) {
+          buff[idx % BUFFER_SIZE] = (DATA_TYPE)1;
         } else {
-          buff[j % BUFFER_SIZE] = 0;
+          buff[idx % BUFFER_SIZE] = (DATA_TYPE)0;
         }
       } else {
-        buff[j % BUFFER_SIZE] = rand() % MAX_VAL;
+        buff[idx % BUFFER_SIZE] = rand() % MAX_VAL;
       }
-      if ((j + 1) % BUFFER_SIZE == 0) {
-        fwrite(buff, sizeof(uint8_t), BUFFER_SIZE, f);
+      if ((idx + 1) % BUFFER_SIZE == 0) {
+        fwrite(buff, sizeof(DATA_TYPE), BUFFER_SIZE, f);
       }
     }
-
-    if (j % BUFFER_SIZE != 0) {
-      fwrite(buff, sizeof(uint8_t), j % BUFFER_SIZE, f);
-    }
-
-    fclose(f);
   }
+  idx++;
+
+  if (idx % BUFFER_SIZE != 0) {
+    fwrite(buff, sizeof(DATA_TYPE), idx % BUFFER_SIZE, f);
+  }
+
+  fclose(f);
 
   return 0;
 }

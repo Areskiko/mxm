@@ -6,3 +6,4 @@ matrix_gen.dSYM
 result.txt
 data
 out.dat
+*.diff
