@@ -1,6 +1,6 @@
 main
 matrix_gen
-main.dSYM
+*.dSYM
 .tags
 matrix_gen.dSYM
 result.txt
@@ -8,3 +8,4 @@ data
 out.dat
 *.diff
 out
+maind
