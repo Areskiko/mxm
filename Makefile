@@ -34,9 +34,13 @@ clean:
 purge: clean
 	-@ rm main matrix_gen $(data_dir)/* 2> /dev/null || true
 
-benchmark: main $(data_dir)/$(sizes:%=%.dat)
-	echo "" > result.txt
-	find ../data -type f | xargs -n 1 -I {} time -ao result.txt ./main {} {} out
+benchmark: main result $(sizes:%=bench%)
 
-.PHONY: clean benchmark $(sizes:%=verify%) purge
+bench%: main $(data_dir)/%.dat
+	time -ao result.txt ./main $(word 2,$+) $(word 2,$+) out
+
+result:
+	echo "" > result.txt
+
+.PHONY: clean benchmark $(sizes:%=verify%) purge result
 .SECONDARY: $(data_dir)/$(sizes:%=%.dat) $(data_dir)/$(sizes:%=%.out) $(data_dir)/$(sizes:%=%.ident)
