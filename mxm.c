@@ -2,18 +2,20 @@
 #include "sizes.h"
 #include <stdlib.h>
 
-#define BLOCK_SIZE 4096
+#ifndef BLOCK_SIZE
+#define BLOCK_SIZE 128
+#endif
 
-_Alignas(BLOCK_SIZE) DATA_TYPE localA[BLOCK_SIZE][BLOCK_SIZE];
-_Alignas(BLOCK_SIZE) DATA_TYPE localB[BLOCK_SIZE][BLOCK_SIZE];
-_Alignas(BLOCK_SIZE) DATA_TYPE localC[BLOCK_SIZE][BLOCK_SIZE];
+_Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localA[BLOCK_SIZE][BLOCK_SIZE];
+_Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localB[BLOCK_SIZE][BLOCK_SIZE];
+_Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localC[BLOCK_SIZE][BLOCK_SIZE];
 
 DATA_TYPE *mxm(DATA_TYPE *A, DATA_TYPE *B, HEADER_TYPE N) {
   size_t blockNum = N / BLOCK_SIZE;
   DATA_TYPE *C = calloc(N * N, sizeof(DATA_TYPE));
 
-  // Traverse blocks.
-  // #pragma omp parallel for
+// Traverse blocks.
+#pragma omp parallel for
   for (size_t bi = 0; bi < blockNum; bi++) {
     for (size_t bj = 0; bj < blockNum; bj++) {
 
@@ -40,7 +42,7 @@ DATA_TYPE *mxm(DATA_TYPE *A, DATA_TYPE *B, HEADER_TYPE N) {
         // Block GEMM.
         for (size_t i = 0; i < BLOCK_SIZE; i++) {
           for (size_t k = 0; k < BLOCK_SIZE; k++) {
-            // #pragma omp simd
+#pragma omp simd
             for (size_t j = 0; j < BLOCK_SIZE; j++) {
               localC[i][j] += localA[i][k] * localB[k][j];
             }
