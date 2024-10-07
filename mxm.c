@@ -7,7 +7,17 @@
 #endif
 
 #ifndef N
-#define N 64
+#define N 16384
+#endif
+
+#ifndef BLOCK_SIZE
+#if N > 128
+#define BLOCK_SIZE 128
+#endif
+
+#if N <= 128
+#define BLOCK_SIZE N
+#endif
 #endif
 
 _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localA[BLOCK_SIZE][BLOCK_SIZE];

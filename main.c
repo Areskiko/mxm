@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#define PRINT_MATRIX
+// #define PRINT_MATRIX
 
 #define CMD_LENGTH 256
 
@@ -61,7 +61,10 @@ int main(int argc, char **argv) {
   printf("\n");
 #endif
 
-
+#ifdef LTO
+  DATA_TYPE *C = mxm(A, B);
+#endif
+#ifndef LTO
   char *cmd = malloc(CMD_LENGTH * sizeof(char));
   sprintf(cmd, "clang --shared -O3 -o libmxm.so mxm.c -DN=%llu", na);
   if (system(cmd)) {
@@ -76,6 +79,7 @@ int main(int argc, char **argv) {
 
   DATA_TYPE *C = (*dyn_mxm)(A, B);
   dlclose(libmxm);
+#endif
 
 #ifdef PRINT_MATRIX
   printf("Matrix C:\n");

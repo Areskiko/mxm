@@ -2,10 +2,10 @@ sizes := 128 256 512 1024 2048 4096 8192 16384 32768 65536
 data_dir := data
 
 main: main.c mxm.c mxm.h sizes.h
-	$(CC) -o main main.c mxm.c -O3
+	$(CC) -o main main.c -O3
 
 maind: main.c mxm.c mxm.h sizes.h
-	$(CC) -g -o maind main.c mxm.c
+	$(CC) -g -o maind main.c
 
 matrix_gen: matrix_gen.c sizes.h
 	$(CC) -o matrix_gen matrix_gen.c -O3
@@ -35,6 +35,7 @@ purge: clean
 	-@ rm main matrix_gen $(data_dir)/* 2> /dev/null || true
 
 benchmark: main result $(sizes:%=bench%)
+	cat result.txt
 
 bench%: main $(data_dir)/%.dat
 	time -ao result.txt ./main $(word 2,$+) $(word 2,$+) out
