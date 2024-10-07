@@ -43,4 +43,4 @@ result:
 	echo "" > result.txt
 
 .PHONY: clean benchmark $(sizes:%=verify%) purge result
-.SECONDARY: $(data_dir)/$(sizes:%=%.dat) $(data_dir)/$(sizes:%=%.out) $(data_dir)/$(sizes:%=%.ident)
+.SECONDARY: $(sizes:%=$(data_dir)/%.dat) $(sizes:%=$(data_dir)/%.out) $(sizes:%=$(data_dir)/%.ident)
