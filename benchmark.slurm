@@ -26,7 +26,7 @@
 cd ${SLURM_SUBMIT_DIR}
 
 # Let's use the Intel compilers today
-module load intel/2023b
+module load GCC/13.3.0
 
 # Build the program
 export CC="gcc"
