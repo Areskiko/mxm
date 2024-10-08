@@ -1,15 +1,16 @@
 #!/usr/bin/env sh
 
-mkdir -p ../data
-mkdir -p ../workdir
+mkdir -p /tmp/data
+mkdir -p /tmp/workdir
 
 for dir in $(git worktree list --porcelain | tr  "\n " ";;" | sed "s/;;/\n/g" | awk -F ";" '!/bare$/{print $2}')
 do
-	ln -s ../data $dir/data
-	ln -s ../workdir $dir/workdir
+	ln -s /tmp/data $dir/data
+	ln -s /tmp/workdir $dir/workdir
 	pushd $dir
 	make benchmark
-	mv result.txt workdir/$dir.log
+	clean_dir=$($dir | sed -E 's-.*/(.*)$-\1-')
+	mv result.txt workdir/$clean_dir.log
 	popd
 done
 
