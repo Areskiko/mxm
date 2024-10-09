@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
 #endif
 #ifndef LTO
   char *cmd = malloc(CMD_LENGTH * sizeof(char));
-  sprintf(cmd, "bash -c '$CC --shared -fPIC -O3 -o libmxm.so mxm.c -DN=%llu'", na);
+  sprintf(cmd, "bash -c '$CC --shared -fPIC -O3 -o ./workdir/libmxm.so mxm.c -DN=%llu'", na);
   if (system(cmd)) {
     fprintf(stderr, "Failed to invoke compiler\n");
     free(A);
@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
   }
 
   errno = 0;
-  void *libmxm = dlopen("libmxm.so", RTLD_NOW);
+  void *libmxm = dlopen("./workdir/libmxm.so", RTLD_NOW);
   if (errno != 0) {
     printf("dlopen ERRNO: %d\n", errno);
   }

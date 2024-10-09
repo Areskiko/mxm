@@ -35,7 +35,6 @@ purge: clean
 	-@ rm main matrix_gen $(data_dir)/* 2> /dev/null || true
 
 benchmark: main result $(sizes:%=bench%)
-	cat result.txt
 
 bench%: main $(data_dir)/%.dat
 	time -ao result.txt ./main $(word 2,$+) $(word 2,$+) out
