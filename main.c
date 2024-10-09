@@ -80,24 +80,20 @@ int main(int argc, char **argv) {
   if (errno != 0) {
     printf("dlopen ERRNO: %d\n", errno);
   }
-  printf("dlopen complete\n");
   mxm_func dyn_mxm = dlsym(libmxm, "mxm");
   if (errno != 0) {
     printf("dlsym ERRNO: %d\n", errno);
   }
-  printf("dlsym complete\n");
 
-  DATA_TYPE *C = (*dyn_mxm)(A, B, "Starting mxm with %d");
+  DATA_TYPE *C = (*dyn_mxm)(A, B);
   if (errno != 0) {
     printf("mxm ERRNO: %d\n", errno);
   }
-  printf("mxm complete\n");
 
   dlclose(libmxm);
   if (errno != 0) {
     printf("dlclose ERRNO: %d\n", errno);
   }
-  printf("dlclose complete\n");
 #endif
 
 #ifdef PRINT_MATRIX

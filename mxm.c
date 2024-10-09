@@ -25,8 +25,7 @@ _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localA[BLOCK_SIZE][BLOCK_SIZE];
 _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localB[BLOCK_SIZE][BLOCK_SIZE];
 _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localC[BLOCK_SIZE][BLOCK_SIZE];
 
-DATA_TYPE *mxm(DATA_TYPE *A, DATA_TYPE *B, char* msg) {
-  printf(msg, N);
+DATA_TYPE *mxm(DATA_TYPE *A, DATA_TYPE *B) {
   size_t blockNum = N / BLOCK_SIZE;
   DATA_TYPE *C = calloc(N * N, sizeof(DATA_TYPE));
 
