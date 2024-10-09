@@ -88,6 +88,11 @@ int main(int argc, char **argv) {
   printf("dlsym complete\n");
 
   DATA_TYPE *C = (*dyn_mxm)(A, B);
+  if (errno != 0) {
+    printf("mxm ERRNO: %d\n", errno);
+  }
+  printf("mxm complete\n");
+
   dlclose(libmxm);
   if (errno != 0) {
     printf("dlclose ERRNO: %d\n", errno);
