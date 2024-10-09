@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
   char *cmd = malloc(CMD_LENGTH * sizeof(char));
   sprintf(cmd, "bash -c '$CC --shared -O3 -o libmxm.so mxm.c -DN=%llu'", na);
   if (system(cmd)) {
-    fprintf(stderr, "Failed to invoke compiler");
+    fprintf(stderr, "Failed to invoke compiler\n");
     free(A);
     free(B);
     return 1;
@@ -78,17 +78,21 @@ int main(int argc, char **argv) {
   errno = 0;
   void *libmxm = dlopen("libmxm.so", RTLD_NOW);
   if (errno != 0) {
-    printf("dlopen ERRNO: %d", errno);
+    printf("dlopen ERRNO: %d\n", errno);
   }
-  printf("dlopen complete");
+  printf("dlopen complete\n");
   mxm_func dyn_mxm = dlsym(libmxm, "mxm");
   if (errno != 0) {
-    printf("dlsym ERRNO: %d", errno);
+    printf("dlsym ERRNO: %d\n", errno);
   }
-  printf("dlsym complete");
+  printf("dlsym complete\n");
 
   DATA_TYPE *C = (*dyn_mxm)(A, B);
   dlclose(libmxm);
+  if (errno != 0) {
+    printf("dlclose ERRNO: %d\n", errno);
+  }
+  printf("dlclose complete\n");
 #endif
 
 #ifdef PRINT_MATRIX
