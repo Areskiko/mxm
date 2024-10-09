@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
   }
   printf("dlsym complete\n");
 
-  DATA_TYPE *C = (*dyn_mxm)(A, B);
+  DATA_TYPE *C = (*dyn_mxm)(A, B, "Starting mxm with %d");
   if (errno != 0) {
     printf("mxm ERRNO: %d\n", errno);
   }
