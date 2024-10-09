@@ -1,5 +1,6 @@
 #include "mxm.h"
 #include "sizes.h"
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -66,13 +67,15 @@ int main(int argc, char **argv) {
 #endif
 #ifndef LTO
   char *cmd = malloc(CMD_LENGTH * sizeof(char));
-  sprintf(cmd, "bash -c '$(CC) --shared -O3 -o libmxm.so mxm.c -DN=%llu'", na);
+  sprintf(cmd, "bash -c '$CC --shared -O3 -o libmxm.so mxm.c -DN=%llu'", na);
   if (system(cmd)) {
     fprintf(stderr, "Failed to invoke compiler");
     free(A);
     free(B);
     return 1;
   }
+  errno_t errno;
+  printf("ERRNO: %d", errno);
 
   void *libmxm = dlopen("libmxm.so", RTLD_NOW);
   mxm_func dyn_mxm = dlsym(libmxm, "mxm");
