@@ -74,11 +74,18 @@ int main(int argc, char **argv) {
     free(B);
     return 1;
   }
-  errno_t errno;
-  printf("ERRNO: %d", errno);
 
+  errno = 0;
   void *libmxm = dlopen("libmxm.so", RTLD_NOW);
+  if (errno != 0) {
+    printf("dlopen ERRNO: %d", errno);
+  }
+  printf("dlopen complete");
   mxm_func dyn_mxm = dlsym(libmxm, "mxm");
+  if (errno != 0) {
+    printf("dlsym ERRNO: %d", errno);
+  }
+  printf("dlsym complete");
 
   DATA_TYPE *C = (*dyn_mxm)(A, B);
   dlclose(libmxm);
