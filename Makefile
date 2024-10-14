@@ -1,46 +1,48 @@
-sizes := 2 4 8 16 32 64 128 256 512 1024 2048 4096 # 8192 16384 32768
-data_dir := data
+CWD := $(shell pwd)
+export INCLUDE := $(CWD)/include
+export CC_FLAGS := -I$(INCLUDE) -fopenmp=libomp
+export CC := /opt/homebrew/opt/llvm/bin/clang
+export DATA_DIR := $(CWD)/data
+export WORK_DIR := $(CWD)/workdir
+export SIZES := 128 256 512 1024 # 2048 # 4096 # 8192 16384 32768
 
-main: main.c mxm.c mxm.h sizes.h
-	$(CC) -o main main.c mxm.c -O3
+SUBDIRS := naive dynamic_naive tiling dynamic_tiling matrix_gen
+IMPLEMENTATIONS := $(wordlist 1,4, $(SUBDIRS))
 
-maind: main.c mxm.c mxm.h sizes.h
-	$(CC) -g -o maind main.c mxm.c
+all: $(SUBDIRS)
 
-matrix_gen: matrix_gen.c sizes.h
-	$(CC) -o matrix_gen matrix_gen.c -O3
+$(SUBDIRS):
+	@ echo "Making $@"
+	@ $(MAKE) -C $@
 
-$(data_dir)/%.dat: matrix_gen
-	./matrix_gen $(data_dir)/$*.dat $*
+$(DATA_DIR)/%.dat:
+	@ $(MAKE) $@ -C matrix_gen
 
-$(data_dir)/%.ident: matrix_gen
-	./matrix_gen $(data_dir)/$*.ident $* ident
+$(DATA_DIR)/%.ident:
+	@ $(MAKE) $@ -C matrix_gen
 
-verify: $(sizes:%=%.diff)
+%.txt: %
+	@ echo "Generating text file $@"
+	@ hexdump -e '/1 "%u\n"' -v $* > $*.txt
 
-$(data_dir)/%.out: main $(data_dir)/%.dat $(data_dir)/%.ident
-	./main $(data_dir)/$*.ident $(data_dir)/$*.dat $(data_dir)/$*.out
+clean: $(SUBDIRS:%=clean_%)
 
-$(data_dir)/%.txt: $(data_dir)/%
-	hexdump -e '/8 "%u\n"' -v $(data_dir)/$* > $(data_dir)/$*.txt
+clean_%:
+	@ echo "Cleaning @*"
+	@ $(MAKE) clean -C $*
 
-%.diff: $(data_dir)/%.out.txt $(data_dir)/%.dat.txt
-	diff -u $(data_dir)/$*.out.txt $(data_dir)/$*.dat.txt > $*.diff
-	rm $*.diff
+benchmark: $(IMPLEMENTATIONS:%=bench_%)
 
-clean:
-	-@ rm -r *.diff *.dSYM 2> /dev/null || true
+bench_%:
+	@ echo "Benchmarking $*"
+	@ $(MAKE) benchmark -C $*
 
-purge: clean
-	-@ rm main matrix_gen $(data_dir)/* 2> /dev/null || true
+verify: $(IMPLEMENTATIONS:%=verify_%)
 
-benchmark: main result $(sizes:%=bench%)
+verify_%:
+	@ echo "Verifying $*"
+	@ $(MAKE) verify -C $*
 
-bench%: main $(data_dir)/%.dat
-	time -ao result.txt ./main $(word 2,$+) $(word 2,$+) out
 
-result:
-	echo "" > result.txt
-
-.PHONY: clean benchmark $(sizes:%=verify%) purge result
-.SECONDARY: $(sizes:%=$(data_dir)/%.dat) $(sizes:%=$(data_dir)/%.out) $(sizes:%=$(data_dir)/%.ident)
+.PHONY: all $(SUBDIRS)
+.SECONDARY: $(SIZES:%=$(DATA_DIR)/%.dat) $(SIZES:%=$(DATA_DIR)/%.ident)
