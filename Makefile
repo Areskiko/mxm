@@ -4,7 +4,7 @@ export CC_FLAGS := -I$(INCLUDE) -fopenmp=libomp
 export CC := /opt/homebrew/opt/llvm/bin/clang
 export DATA_DIR := $(CWD)/data
 export WORK_DIR := $(CWD)/workdir
-export SIZES := 128 256 512 1024 # 2048 # 4096 # 8192 16384 32768
+export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536
 
 SUBDIRS := naive dynamic_naive tiling dynamic_tiling matrix_gen
 IMPLEMENTATIONS := $(wordlist 1,4, $(SUBDIRS))

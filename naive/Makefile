@@ -1,10 +1,10 @@
 all: main maind
 
-main: main.c mxm.c
+main: main.c mxm.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
 	@ echo "Compiling naive"
 	@ $(CC) $(CC_FLAGS) -o main main.c mxm.c -O3
 
-maind: main.c mxm.c
+maind: main.c mxm.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
 	@ echo "Compiling naive in debug mode"
 	@ $(CC) $(CC_FLAGS) -o maind main.c mxm.c -g
 

@@ -1,10 +1,10 @@
 all: main maind
 
-main: main.c mxm.c
+main: main.c mxm.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
 	@ echo "Compiling dynamic naive"
 	@ $(CC) $(CC_FLAGS) -o main main.c -O3
 
-maind: main.c mxm.c
+maind: main.c mxm.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
 	@ echo "Compiling dynamic naive in debug mode"
 	@ $(CC) $(CC_FLAGS) -o maind main.c -g
 
