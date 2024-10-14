@@ -2,11 +2,12 @@
 #SBATCH --job-name="GEMM Benchmark"
 #SBTACH --account=share-ie-idi
 #SBATCH --partition=CPUQ
-#SBATCH --time=08:00:00
+#SBATCH --time=24:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=56
 #SBATCH --mem=256G
+#SBATCH --exclusive
 #SBATCH --output=benchmark.log
 
 # The lines above here are instructions for the batch scheduler
