@@ -10,6 +10,8 @@ _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localA[BLOCK_SIZE][BLOCK_SIZE];
 _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localB[BLOCK_SIZE][BLOCK_SIZE];
 _Alignas(BLOCK_SIZE *BLOCK_SIZE) DATA_TYPE localC[BLOCK_SIZE][BLOCK_SIZE];
 
+#pragma omp threadprivate(localA, localB, localC)
+
 DATA_TYPE *mxm(DATA_TYPE *A, DATA_TYPE *B, HEADER_TYPE N) {
   size_t blockNum = N / BLOCK_SIZE;
   DATA_TYPE *C = calloc(N * N, sizeof(DATA_TYPE));

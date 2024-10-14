@@ -7,7 +7,7 @@ export WORK_DIR := $(CWD)/workdir
 export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536
 
 SUBDIRS := naive dynamic_naive tiling dynamic_tiling matrix_gen
-IMPLEMENTATIONS := $(wordlist 1,4, $(SUBDIRS))
+IMPLEMENTATIONS := $(wordlist 3,4, $(SUBDIRS))
 
 all: $(SUBDIRS)
 
