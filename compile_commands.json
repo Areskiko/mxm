@@ -3,182 +3,182 @@
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-O3",
       "-o",
       "main",
       "main.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/naive",
-    "file": "/Users/stefan/projects/personal/mxm/master/naive/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/naive/main"
+    "directory": "/Users/stefan/projects/personal/mxm/naive",
+    "file": "/Users/stefan/projects/personal/mxm/naive/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/naive/main"
   },
   {
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
-      "-O3",
-      "-o",
-      "main",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/naive",
-    "file": "/Users/stefan/projects/personal/mxm/master/naive/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/naive/main"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
-      "-g",
-      "-o",
-      "maind",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/naive",
-    "file": "/Users/stefan/projects/personal/mxm/master/naive/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/naive/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
-      "-g",
-      "-o",
-      "maind",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/naive",
-    "file": "/Users/stefan/projects/personal/mxm/master/naive/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/naive/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
-      "-O3",
-      "-o",
-      "main",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/dynamic_naive",
-    "file": "/Users/stefan/projects/personal/mxm/master/dynamic_naive/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/dynamic_naive/main"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
-      "-g",
-      "-o",
-      "maind",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/dynamic_naive",
-    "file": "/Users/stefan/projects/personal/mxm/master/dynamic_naive/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/dynamic_naive/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
-      "-O3",
-      "-o",
-      "main",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/tiling",
-    "file": "/Users/stefan/projects/personal/mxm/master/tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/tiling/main"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-O3",
       "-o",
       "main",
       "mxm.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/tiling",
-    "file": "/Users/stefan/projects/personal/mxm/master/tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/tiling/main"
+    "directory": "/Users/stefan/projects/personal/mxm/naive",
+    "file": "/Users/stefan/projects/personal/mxm/naive/mxm.c",
+    "output": "/Users/stefan/projects/personal/mxm/naive/main"
   },
   {
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-g",
       "-o",
       "maind",
       "main.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/tiling",
-    "file": "/Users/stefan/projects/personal/mxm/master/tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/tiling/maind"
+    "directory": "/Users/stefan/projects/personal/mxm/naive",
+    "file": "/Users/stefan/projects/personal/mxm/naive/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/naive/maind"
   },
   {
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-g",
       "-o",
       "maind",
       "mxm.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/tiling",
-    "file": "/Users/stefan/projects/personal/mxm/master/tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/tiling/maind"
+    "directory": "/Users/stefan/projects/personal/mxm/naive",
+    "file": "/Users/stefan/projects/personal/mxm/naive/mxm.c",
+    "output": "/Users/stefan/projects/personal/mxm/naive/maind"
   },
   {
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-O3",
       "-o",
       "main",
       "main.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/dynamic_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/master/dynamic_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/dynamic_tiling/main"
+    "directory": "/Users/stefan/projects/personal/mxm/dynamic_naive",
+    "file": "/Users/stefan/projects/personal/mxm/dynamic_naive/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/dynamic_naive/main"
   },
   {
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-g",
       "-o",
       "maind",
       "main.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/dynamic_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/master/dynamic_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/dynamic_tiling/maind"
+    "directory": "/Users/stefan/projects/personal/mxm/dynamic_naive",
+    "file": "/Users/stefan/projects/personal/mxm/dynamic_naive/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/dynamic_naive/maind"
   },
   {
     "arguments": [
       "/usr/bin/clang",
       "-c",
-      "-I/Users/stefan/projects/personal/mxm/master/include",
+      "-I/Users/stefan/projects/personal/mxm/include",
+      "-O3",
+      "-o",
+      "main",
+      "main.c"
+    ],
+    "directory": "/Users/stefan/projects/personal/mxm/tiling",
+    "file": "/Users/stefan/projects/personal/mxm/tiling/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/tiling/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I/Users/stefan/projects/personal/mxm/include",
+      "-O3",
+      "-o",
+      "main",
+      "mxm.c"
+    ],
+    "directory": "/Users/stefan/projects/personal/mxm/tiling",
+    "file": "/Users/stefan/projects/personal/mxm/tiling/mxm.c",
+    "output": "/Users/stefan/projects/personal/mxm/tiling/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I/Users/stefan/projects/personal/mxm/include",
+      "-g",
+      "-o",
+      "maind",
+      "main.c"
+    ],
+    "directory": "/Users/stefan/projects/personal/mxm/tiling",
+    "file": "/Users/stefan/projects/personal/mxm/tiling/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/tiling/maind"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I/Users/stefan/projects/personal/mxm/include",
+      "-g",
+      "-o",
+      "maind",
+      "mxm.c"
+    ],
+    "directory": "/Users/stefan/projects/personal/mxm/tiling",
+    "file": "/Users/stefan/projects/personal/mxm/tiling/mxm.c",
+    "output": "/Users/stefan/projects/personal/mxm/tiling/maind"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I/Users/stefan/projects/personal/mxm/include",
+      "-O3",
+      "-o",
+      "main",
+      "main.c"
+    ],
+    "directory": "/Users/stefan/projects/personal/mxm/dynamic_tiling",
+    "file": "/Users/stefan/projects/personal/mxm/dynamic_tiling/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/dynamic_tiling/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I/Users/stefan/projects/personal/mxm/include",
+      "-g",
+      "-o",
+      "maind",
+      "main.c"
+    ],
+    "directory": "/Users/stefan/projects/personal/mxm/dynamic_tiling",
+    "file": "/Users/stefan/projects/personal/mxm/dynamic_tiling/main.c",
+    "output": "/Users/stefan/projects/personal/mxm/dynamic_tiling/maind"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I/Users/stefan/projects/personal/mxm/include",
       "-O3",
       "-o",
       "mg",
       "matrix_gen.c"
     ],
-    "directory": "/Users/stefan/projects/personal/mxm/master/shared/matrix_gen",
-    "file": "/Users/stefan/projects/personal/mxm/master/shared/matrix_gen/matrix_gen.c",
-    "output": "/Users/stefan/projects/personal/mxm/master/shared/matrix_gen/mg"
+    "directory": "/Users/stefan/projects/personal/mxm/matrix_gen",
+    "file": "/Users/stefan/projects/personal/mxm/matrix_gen/matrix_gen.c",
+    "output": "/Users/stefan/projects/personal/mxm/matrix_gen/mg"
   }
 ]
