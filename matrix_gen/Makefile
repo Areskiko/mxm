@@ -13,4 +13,5 @@ $(DATA_DIR)/%.ident: mg
 clean:
 	-@ rm -r mg *.dSYM 2> /dev/null || true
 
+.PHONY: clean
 .SECONDARY: mg

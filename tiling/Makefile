@@ -32,5 +32,5 @@ result:
 clean:
 	-@ rm -r main maind *.dSYM 2> /dev/null || true
 
-.PHONY: all main maind clean verify %.diff benchmark bench% result
+.PHONY: all clean verify %.diff benchmark bench% result
 .SECONDARY: main maind $(SIZES:%=$(DATA_DIR)/%.dat) $(SIZES:%=$(DATA_DIR)/%.ident) $(SIZES:%=$(WORK_DIR)/%.tiling.out)

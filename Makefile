@@ -26,9 +26,11 @@ $(DATA_DIR)/%.ident:
 	@ hexdump -e '/1 "%u\n"' -v $* > $*.txt
 
 clean: $(SUBDIRS:%=clean_%)
+	@ echo "Cleaning data files"
+	@- rm **/*.out **/*.dat **/*.ident **/*.txt 2> /dev/null || true
 
 clean_%:
-	@ echo "Cleaning @*"
+	@ echo "Cleaning $*"
 	@ $(MAKE) clean -C $*
 
 benchmark: $(IMPLEMENTATIONS:%=bench_%)
