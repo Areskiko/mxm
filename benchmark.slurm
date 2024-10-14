@@ -4,9 +4,10 @@
 #SBATCH --partition=CPUQ
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=10
-#SBATCH --cpus-per-task=2
-#SBATCH --output=test.log
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=56
+#SBATCH --mem=256G
+#SBATCH --output=benchmark.log
 
 # The lines above here are instructions for the batch scheduler
 
@@ -30,4 +31,5 @@ module load GCC/13.3.0
 
 # Build the program
 export CC="gcc"
-./benchmark.sh
+make benchmark
+for file in **/result.txt; do echo $file >> benchmark_results.txt; cat $file >> benchmark_results.txt; done

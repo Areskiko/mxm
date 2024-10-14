@@ -23,7 +23,7 @@ benchmark: main result $(SIZES:%=bench%)
 
 bench%: main $(DATA_DIR)/%.dat
 	@ echo "Benchmarking dynamic tiling $*"
-	@ time -ao result.txt ./main $(word 2,$+) $(word 2,$+) $(WORK_DIR)/dynamic_tiling.out
+	@ time -ao result.txt timeout 1h ./main $(word 2,$+) $(word 2,$+) $(WORK_DIR)/dynamic_tiling.out
 
 result:
 	@ echo "Wiping last result"

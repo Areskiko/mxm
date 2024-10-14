@@ -23,7 +23,7 @@ benchmark: main result $(SIZES:%=bench%)
 
 bench%: main $(DATA_DIR)/%.dat
 	@ echo "Benchmarking dynamic naive $*"
-	@ time -ao result.txt ./main $(word 2,$+) $(word 2,$+) $(WORK_DIR)/dynamic_naive.out
+	@ time -ao result.txt timeout 1h ./main $(word 2,$+) $(word 2,$+) $(WORK_DIR)/dynamic_naive.out
 
 result:
 	@ echo "Wiping last result"

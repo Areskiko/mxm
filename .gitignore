@@ -9,3 +9,4 @@
 workdir
 data
 .tags
+.cache
