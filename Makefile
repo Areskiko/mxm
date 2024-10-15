@@ -1,13 +1,13 @@
 CWD := $(shell pwd)
 export INCLUDE := $(CWD)/include
-export CC_FLAGS := -I$(INCLUDE) -fopenmp=libomp
+export CC_FLAGS := -I$(INCLUDE) -fopenmp=libomp -flto
 export CC := /opt/homebrew/opt/llvm/bin/clang
 export DATA_DIR := $(CWD)/data
 export WORK_DIR := $(CWD)/workdir
 export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536
 
-SUBDIRS := naive dynamic_naive tiling dynamic_tiling matrix_gen
-IMPLEMENTATIONS := $(wordlist 3,4, $(SUBDIRS))
+SUBDIRS := naive dynamic_naive tiling dynamic_tiling lto_tiling matrix_gen
+IMPLEMENTATIONS := $(wordlist 3,5, $(SUBDIRS))
 
 all: $(SUBDIRS)
 

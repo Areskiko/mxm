@@ -6,6 +6,8 @@
 **/*.dat
 **/*.diff
 **/*out
+**/main_*
+**/maind_*
 workdir
 data
 .tags

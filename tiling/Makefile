@@ -1,10 +1,10 @@
 all: main maind
 
-main: main.c mxm.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
+main: main.c mxm.c $(INCLUDE)/sizes.h
 	@ echo "Compiling tiling"
 	@ $(CC) $(CC_FLAGS) -o main main.c mxm.c -O3
 
-maind: main.c mxm.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
+maind: main.c mxm.c $(INCLUDE)/sizes.h
 	@ echo "Compiling tiling in debug mode"
 	@ $(CC) $(CC_FLAGS) -o maind main.c mxm.c -g
 

@@ -1,4 +1,4 @@
-mg: matrix_gen.c $(wildcard $(INCLUDE)/*.c) $(wildcard $(INCLUDE)/*.h)
+mg: matrix_gen.c $(INCLUDE)/sizes.h
 	@ echo "Compiling mg"
 	@ $(CC) $(CC_FLAGS) -o mg matrix_gen.c -O3
 

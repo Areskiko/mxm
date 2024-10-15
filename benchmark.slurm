@@ -33,4 +33,6 @@ module load GCC/13.3.0
 # Build the program
 export CC="gcc"
 make benchmark
+
+echo "" > benchmark_results.txt
 for file in **/result.txt; do echo $file >> benchmark_results.txt; cat $file >> benchmark_results.txt; done

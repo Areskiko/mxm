@@ -61,27 +61,7 @@ int main(int argc, char **argv) {
   printf("\n");
 #endif
 
-  char *cmd = malloc(CMD_LENGTH * sizeof(char));
-  char *workdir = getenv("WORK_DIR");
-  char *lib_file = malloc(CMD_LENGTH * sizeof(char));
-  sprintf(lib_file, "%s/libmxm.so", workdir);
-  sprintf(cmd,
-          "bash -c '$CC --shared -fPIC $CC_FLAGS -O3 -o %s mxm.c "
-          "-DN=%llu'",
-		  lib_file, na);
-  if (system(cmd)) {
-    fprintf(stderr, "Failed to invoke compiler\n");
-    free(A);
-    free(B);
-    return 1;
-  }
-
-  void *libmxm = dlopen(lib_file, RTLD_NOW);
-  mxm_func dyn_mxm = dlsym(libmxm, "mxm");
-
-  DATA_TYPE *C = (*dyn_mxm)(A, B);
-
-  dlclose(libmxm);
+  DATA_TYPE *C = mxm(A, B);
 
 #ifdef PRINT_MATRIX
   printf("Matrix C:\n");
