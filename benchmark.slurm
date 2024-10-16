@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=28
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=256G
+#SBATCH --mem=200G
 #SBATCH --exclusive
 #SBATCH --output=benchmark.log
 
@@ -29,6 +29,9 @@ cd ${SLURM_SUBMIT_DIR}
 
 # Let's use the Intel compilers today
 module load GCC/13.3.0
+
+mkdir -p /localscratch/mxm_workdir
+mkdir -p /localscratch/mxm_datadir
 
 # Build the program
 export CC="gcc"
