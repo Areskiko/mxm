@@ -2,7 +2,7 @@ all: main maind
 
 main: main.c mxm.c $(INCLUDE)/sizes.h
 	@ echo "Compilnig dynamic tiling"
-	$(CC) $(CC_FLAGS) -o main main.c -O3
+	@ $(CC) $(CC_FLAGS) -o main main.c -O3
 
 maind: main.c mxm.c $(INCLUDE)/sizes.h
 	@ echo "Compilnig dynamic tiling in debug mode"
