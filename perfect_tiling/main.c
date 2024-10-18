@@ -15,7 +15,6 @@
 #define N 128
 #endif
 
-
 int main(int argc, char **argv) {
 
   if (argc != 4) {
@@ -27,18 +26,11 @@ int main(int argc, char **argv) {
 
   FILE *fa = fopen(argv[1], "r");
   FILE *fb = fopen(argv[2], "r");
-  HEADER_TYPE na = N, nb = N;
   HEADER_TYPE dump;
   fread(&dump, sizeof(HEADER_TYPE), 1, fa);
   fread(&dump, sizeof(HEADER_TYPE), 1, fb);
 
-
-  if (na != nb) {
-    fprintf(stderr, "Matrices are of different sizes: %llu and %llu", na, nb);
-    return 1;
-  }
-
-  A = malloc(na * na * sizeof(DATA_TYPE));
+  A = malloc(N * N * sizeof(DATA_TYPE));
   fread(A, sizeof(DATA_TYPE), na * na, fa);
   fclose(fa);
 
@@ -53,7 +45,7 @@ int main(int argc, char **argv) {
   printf("\n");
 #endif
 
-  B = malloc(nb * nb * sizeof(DATA_TYPE));
+  B = malloc(N * N * sizeof(DATA_TYPE));
   fread(B, sizeof(DATA_TYPE), nb * nb, fb);
   fclose(fb);
 
@@ -82,8 +74,8 @@ int main(int argc, char **argv) {
 #endif
 
   FILE *fc = fopen(argv[3], "w");
-  fwrite(&na, sizeof(HEADER_TYPE), 1, fc);
-  fwrite(C, sizeof(DATA_TYPE), na * na, fc);
+  fwrite(&dump, sizeof(HEADER_TYPE), 1, fc);
+  fwrite(C, sizeof(DATA_TYPE), N * N, fc);
   fflush(fc);
 
   free(A);
