@@ -22,7 +22,7 @@ verify: $(SIZES:%=%.diff)
 benchmark: result $(SIZES:%=bench%)
 
 bench%: main_% $(DATA_DIR)/%.dat
-	@ echo "Benchmarking lto tiling $*"
+	@ echo "Benchmarking perfect tiling $*"
 	@ time -ao result.txt timeout 1h ./main_$* $(word 2,$+) $(word 2,$+) $(WORK_DIR)/lto_tiling.out
 
 result:
