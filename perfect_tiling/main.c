@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
   fread(&dump, sizeof(HEADER_TYPE), 1, fb);
 
   A = malloc(N * N * sizeof(DATA_TYPE));
-  fread(A, sizeof(DATA_TYPE), na * na, fa);
+  fread(A, sizeof(DATA_TYPE), N * N, fa);
   fclose(fa);
 
 #ifdef PRINT_MATRIX
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 #endif
 
   B = malloc(N * N * sizeof(DATA_TYPE));
-  fread(B, sizeof(DATA_TYPE), nb * nb, fb);
+  fread(B, sizeof(DATA_TYPE), N * N, fb);
   fclose(fb);
 
 #ifdef PRINT_MATRIX
