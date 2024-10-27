@@ -47,14 +47,14 @@ verify_%:
 	@ $(MAKE) verify -C $*
 
 extensive.csv:
-	echo "Implementation$(SIZES:%=;%)" > $@
+	echo "Implementation$(SIZES:%=,%)" > $@
 
 extensive: clean extensive.csv $(IMPLEMENTATIONS) $(SIZES:%=$(DATA_DIR)/%.dat)
 	i=0 ; while [[ $$i -le 60 ]]; do \
 		for impl in $(IMPLEMENTATIONS); do \
 			$(MAKE) bench_$$impl; \
 			cat $$impl/result.txt | \
-			grep -oE "((\\d*:?)+.?\\d*)elapsec" | \
+			grep -oE "((\\d*:?)+.?\\d*)elapsed" | \
 			sed "s/elapsed//" | \
 			tr "\n" "," | \
 			sed "s/$$/\n/" | \
