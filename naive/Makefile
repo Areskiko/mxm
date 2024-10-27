@@ -1,4 +1,4 @@
-all: main maind
+all: main
 
 main: main.c mxm.c $(INCLUDE)/sizes.h
 	@ echo "Compiling naive"

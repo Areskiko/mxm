@@ -1,11 +1,11 @@
-all: $(SIZES:%=main_%) $(SIZES:%=maind_%)
+all: $(SIZES:%=main_%)
 
 main_%: main.c mxm.c $(INCLUDE)/sizes.h
-	@ echo "Compilnig lto main_$*"
+	@ echo "Compilnig perfect tiling main_$*"
 	@ $(CC) $(CC_FLAGS) -o $@ main.c mxm.c -O3 -DN=$*
 
 maind_%: main.c mxm.c $(INCLUDE)/sizes.h
-	@ echo "Compilnig lto in debug mode"
+	@ echo "Compilnig perfect tiling in debug mode"
 	@ $(CC) $(CC_FLAGS) -o $@ main.c mxm.c -g -DN=$*
 
 $(DATA_DIR)/%:

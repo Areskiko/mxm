@@ -2,11 +2,11 @@
 #SBATCH --job-name="GEMM Benchmark"
 #SBTACH --account=share-ie-idi
 #SBATCH --partition=CPUQ
-#SBATCH --time=24:00:00
+#SBATCH --time=7-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=28
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=200G
+#SBATCH --mem=220G
 #SBATCH --exclusive
 #SBATCH --output=benchmark.log
 

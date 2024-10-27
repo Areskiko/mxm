@@ -1,4 +1,4 @@
-all: $(SIZES:%=main_%) $(SIZES:%=maind_%)
+all: $(SIZES:%=main_%)
 
 main_%: main.c mxm.c $(INCLUDE)/sizes.h
 	@ echo "Compilnig lto main_$*"

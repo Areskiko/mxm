@@ -5,7 +5,7 @@ export CC := /opt/homebrew/opt/llvm/bin/clang
 #export CC := /opt/homebrew/opt/gcc/bin/gcc-14
 export DATA_DIR := $(CWD)/data
 export WORK_DIR := $(CWD)/workdir
-export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 #65536
+export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072 262144
 
 SUBDIRS := naive dynamic_naive tiling dynamic_tiling lto_tiling perfect_tiling matrix_gen
 IMPLEMENTATIONS := $(wordlist 3,6, $(SUBDIRS))
@@ -46,6 +46,24 @@ verify_%:
 	@ echo "Verifying $*"
 	@ $(MAKE) verify -C $*
 
+extensive.csv:
+	echo "Implementation$(SIZES:%=;%)" > $@
 
-.PHONY: all $(SUBDIRS)
+extensive: clean extensive.csv $(IMPLEMENTATIONS) $(SIZES:%=$(DATA_DIR)/%.dat)
+	i=0 ; while [[ $$i -le 60 ]]; do \
+		for impl in $(IMPLEMENTATIONS); do \
+			$(MAKE) bench_$$impl; \
+			cat $$impl/result.txt | \
+			grep -oE "((\\d*:?)+.?\\d*)elapsec" | \
+			sed "s/elapsed//" | \
+			tr "\n" "," | \
+			sed "s/$$/\n/" | \
+			sed "s/,$$//" | \
+			sed "s/^/$$impl,/" >> extensive.csv ; \
+		done; \
+        ((i=i+1)) ; \
+	done;
+
+
+.PHONY: all extensive extensive.csv clean clean_% $(SUBDIRS)
 .SECONDARY: $(SIZES:%=$(DATA_DIR)/%.dat) $(SIZES:%=$(DATA_DIR)/%.ident)
