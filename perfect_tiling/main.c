@@ -1,5 +1,6 @@
 #include "mxm.h"
 #include "sizes.h"
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,6 +15,8 @@
 #ifndef N
 #define N 128
 #endif
+
+uint64_t NN = (uint64_t) N  * (uint64_t) N;
 
 int main(int argc, char **argv) {
 
@@ -30,8 +33,8 @@ int main(int argc, char **argv) {
   fread(&dump, sizeof(HEADER_TYPE), 1, fa);
   fread(&dump, sizeof(HEADER_TYPE), 1, fb);
 
-  A = malloc(N * N * sizeof(DATA_TYPE));
-  fread(A, sizeof(DATA_TYPE), N * N, fa);
+  A = malloc(NN * sizeof(DATA_TYPE));
+  fread(A, sizeof(DATA_TYPE), NN, fa);
   fclose(fa);
 
 #ifdef PRINT_MATRIX
@@ -45,8 +48,8 @@ int main(int argc, char **argv) {
   printf("\n");
 #endif
 
-  B = malloc(N * N * sizeof(DATA_TYPE));
-  fread(B, sizeof(DATA_TYPE), N * N, fb);
+  B = malloc(NN * sizeof(DATA_TYPE));
+  fread(B, sizeof(DATA_TYPE), NN, fb);
   fclose(fb);
 
 #ifdef PRINT_MATRIX
@@ -75,7 +78,7 @@ int main(int argc, char **argv) {
 
   FILE *fc = fopen(argv[3], "w");
   fwrite(&dump, sizeof(HEADER_TYPE), 1, fc);
-  fwrite(C, sizeof(DATA_TYPE), N * N, fc);
+  fwrite(C, sizeof(DATA_TYPE), NN, fc);
   fflush(fc);
 
   free(A);
