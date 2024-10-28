@@ -5,7 +5,7 @@ export CC := /opt/homebrew/opt/llvm/bin/clang
 #export CC := /opt/homebrew/opt/gcc/bin/gcc-14
 export DATA_DIR := $(CWD)/data
 export WORK_DIR := $(CWD)/workdir
-export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072 262144
+export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072
 
 SUBDIRS := naive dynamic_naive tiling dynamic_tiling lto_tiling perfect_tiling matrix_gen
 IMPLEMENTATIONS := $(wordlist 3,6, $(SUBDIRS))
