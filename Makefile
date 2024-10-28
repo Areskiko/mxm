@@ -54,7 +54,7 @@ extensive: clean extensive.csv $(IMPLEMENTATIONS) $(SIZES:%=$(DATA_DIR)/%.dat)
 		for impl in $(IMPLEMENTATIONS); do \
 			$(MAKE) bench_$$impl; \
 			cat $$impl/result.txt | \
-			grep -oE "((\\d*:?)+.?\\d*)elapsed" | \
+			grep -oP "(\d+:?)+(\d+\.\d+)?elapsed" | \
 			sed "s/elapsed//" | \
 			tr "\n" "," | \
 			sed "s/$$/\n/" | \
