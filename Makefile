@@ -1,11 +1,11 @@
 CWD := $(shell pwd)
 export INCLUDE := $(CWD)/include
-export CC_FLAGS := -I$(INCLUDE) -fopenmp=libomp -flto -march=native
+export CC_FLAGS := -I$(INCLUDE) -fopenmp=libomp -flto -march=native -DINSTRUMENT
 export CC := /opt/homebrew/opt/llvm/bin/clang
 #export CC := /opt/homebrew/opt/gcc/bin/gcc-14
 export DATA_DIR := $(CWD)/data
 export WORK_DIR := $(CWD)/workdir
-export SIZES := 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072
+export SIZES := 128 256 512 1024 2048 4096 8192 16384 #32768 65536 131072
 
 SUBDIRS := naive dynamic_naive tiling dynamic_tiling lto_tiling perfect_tiling matrix_gen
 IMPLEMENTATIONS := $(wordlist 3,6, $(SUBDIRS))
@@ -46,11 +46,27 @@ verify_%:
 	@ echo "Verifying $*"
 	@ $(MAKE) verify -C $*
 
+instrument.csv:
+	echo "Implementation,matrix_size,headers,read_a,read_b,lib_load,compute,write_c" > $@
+
+instr_%:
+	@ echo "Instrumenting $*"
+	@ $(MAKE) instrument -C $*
+
+instrument: clean instrument.csv $(IMPLEMENTATIONS) $(SIZES:%=$(DATA_DIR)/%.dat)
+	i=0 ; while [[ $$i -le 60 ]]; do \
+		for impl in $(IMPLEMENTATIONS); do \
+			$(MAKE) instr_$$impl; \
+		done; \
+        ((i=i+1)) ; \
+	done;
+
+
 extensive.csv:
 	echo "Implementation$(SIZES:%=,%)" > $@
 
 extensive: clean extensive.csv $(IMPLEMENTATIONS) $(SIZES:%=$(DATA_DIR)/%.dat)
-	i=0 ; while [[ $$i -le 60 ]]; do \
+	@ i=0 ; while [[ $$i -le 60 ]]; do \
 		for impl in $(IMPLEMENTATIONS); do \
 			$(MAKE) bench_$$impl; \
 			cat $$impl/result.txt | \

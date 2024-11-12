@@ -8,6 +8,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef INSTRUMENT
+#include <time.h>
+#endif
+
 // #define PRINT_MATRIX
 
 #define CMD_LENGTH 512
@@ -16,7 +20,7 @@
 #define N 128
 #endif
 
-uint64_t NN = (uint64_t) N  * (uint64_t) N;
+uint64_t NN = (uint64_t)N * (uint64_t)N;
 
 int main(int argc, char **argv) {
 
@@ -24,6 +28,10 @@ int main(int argc, char **argv) {
     fprintf(stderr, "Usage: %s matrixA matrixB matrixC\n", argv[0]);
     return 1;
   }
+
+#ifdef INSTRUMENT
+  time_t start = time(NULL);
+#endif
 
   DATA_TYPE *A, *B;
 
@@ -33,9 +41,17 @@ int main(int argc, char **argv) {
   fread(&dump, sizeof(HEADER_TYPE), 1, fa);
   fread(&dump, sizeof(HEADER_TYPE), 1, fb);
 
+#ifdef INSTRUMENT
+  time_t headers = time(NULL);
+#endif
+
   A = malloc(NN * sizeof(DATA_TYPE));
   fread(A, sizeof(DATA_TYPE), NN, fa);
   fclose(fa);
+
+#ifdef INSTRUMENT
+  time_t read_a = time(NULL);
+#endif
 
 #ifdef PRINT_MATRIX
   printf("Matrix A:\n");
@@ -52,6 +68,10 @@ int main(int argc, char **argv) {
   fread(B, sizeof(DATA_TYPE), NN, fb);
   fclose(fb);
 
+#ifdef INSTRUMENT
+  time_t read_b = time(NULL);
+#endif
+
 #ifdef PRINT_MATRIX
   printf("Matrix B:\n");
   for (int i = 0; i < nb; i++) {
@@ -64,6 +84,9 @@ int main(int argc, char **argv) {
 #endif
 
   DATA_TYPE *C = mxm(A, B);
+#ifdef INSTRUMENT
+  time_t compute = time(NULL);
+#endif
 
 #ifdef PRINT_MATRIX
   printf("Matrix C:\n");
@@ -81,9 +104,20 @@ int main(int argc, char **argv) {
   fwrite(C, sizeof(DATA_TYPE), NN, fc);
   fflush(fc);
 
+#ifdef INSTRUMENT
+  time_t write_c = time(NULL);
+#endif
+
   free(A);
   free(B);
   free(C);
 
+#ifdef INSTRUMENT
+  // Impl, header, read_a, read_b, lib_load, compute, write_c
+
+  printf("perfect_tiling,%lli,%li,%li,%li,%li,%li,%li\n", dump, headers - start,
+         read_a - headers, read_b - read_a, read_b - read_b, compute - read_b,
+         write_c - compute);
+#endif
   return 0;
 }

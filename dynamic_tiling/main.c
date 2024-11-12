@@ -7,6 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef INSTRUMENT
+#include <time.h>
+#endif
+
 // #define PRINT_MATRIX
 
 #define CMD_LENGTH 512
@@ -18,6 +22,10 @@ int main(int argc, char **argv) {
     return 1;
   }
 
+#ifdef INSTRUMENT
+  time_t start = time(NULL);
+#endif
+
   DATA_TYPE *A, *B;
 
   FILE *fa = fopen(argv[1], "r");
@@ -25,6 +33,10 @@ int main(int argc, char **argv) {
   HEADER_TYPE na, nb;
   fread(&na, sizeof(HEADER_TYPE), 1, fa);
   fread(&nb, sizeof(HEADER_TYPE), 1, fb);
+
+#ifdef INSTRUMENT
+  time_t headers = time(NULL);
+#endif
 
   if (na != nb) {
     fprintf(stderr, "Matrices are of different sizes: %llu and %llu", na, nb);
@@ -34,6 +46,10 @@ int main(int argc, char **argv) {
   A = malloc(na * na * sizeof(DATA_TYPE));
   fread(A, sizeof(DATA_TYPE), na * na, fa);
   fclose(fa);
+
+#ifdef INSTRUMENT
+  time_t read_a = time(NULL);
+#endif
 
 #ifdef PRINT_MATRIX
   printf("Matrix A:\n");
@@ -49,6 +65,10 @@ int main(int argc, char **argv) {
   B = malloc(nb * nb * sizeof(DATA_TYPE));
   fread(B, sizeof(DATA_TYPE), nb * nb, fb);
   fclose(fb);
+
+#ifdef INSTRUMENT
+  time_t read_b = time(NULL);
+#endif
 
 #ifdef PRINT_MATRIX
   printf("Matrix B:\n");
@@ -68,7 +88,7 @@ int main(int argc, char **argv) {
   sprintf(cmd,
           "bash -c '$CC --shared -fPIC $CC_FLAGS -O3 -o %s mxm.c "
           "-DN=%llu'",
-		  lib_file, na);
+          lib_file, na);
   if (system(cmd)) {
     fprintf(stderr, "Failed to invoke compiler\n");
     free(A);
@@ -79,7 +99,15 @@ int main(int argc, char **argv) {
   void *libmxm = dlopen(lib_file, RTLD_NOW);
   mxm_func dyn_mxm = dlsym(libmxm, "mxm");
 
+#ifdef INSTRUMENT
+  time_t lib_load = time(NULL);
+#endif
+
   DATA_TYPE *C = (*dyn_mxm)(A, B);
+
+#ifdef INSTRUMENT
+  time_t compute = time(NULL);
+#endif
 
   dlclose(libmxm);
 
@@ -99,9 +127,18 @@ int main(int argc, char **argv) {
   fwrite(C, sizeof(DATA_TYPE), na * na, fc);
   fflush(fc);
 
+#ifdef INSTRUMENT
+  time_t write_c = time(NULL);
+#endif
+
   free(A);
   free(B);
   free(C);
 
+#ifdef INSTRUMENT
+	// Impl, matrix, header, read_a, read_b, lib_load, compute, write_c
+
+	printf("dynamic_tiling,%llu,%li,%li,%li,%li,%li,%li\n", na, headers - start, read_a - headers, read_b - read_a, lib_load - read_b, compute - lib_load, write_c - compute);
+#endif
   return 0;
 }

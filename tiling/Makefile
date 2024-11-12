@@ -25,6 +25,15 @@ bench%: main $(DATA_DIR)/%.dat
 	@ echo "Benchmarking tiling $*"
 	@ time -ao result.txt timeout 1h ./main $(word 2,$+) $(word 2,$+) $(WORK_DIR)/tiling.out
 
+../instrument.csv:
+	$(MAKE) instrument.csv -C ..
+
+instrument: main $(SIZES:%=instr_%)
+
+instr_%: main $(DATA_DIR)/%.dat ../instrument.csv
+	@ echo "Instrumenting tiling $*"
+	@ timeout 1h ./main $(word 2,$+) $(word 2,$+) $(WORK_DIR)/tiling.out >> ../instrument.csv
+
 result:
 	@ echo "Wiping last result"
 	@ echo "" > result.txt
