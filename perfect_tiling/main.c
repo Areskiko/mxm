@@ -113,12 +113,13 @@ int main(int argc, char **argv) {
 #ifdef INSTRUMENT
   // Impl, header, read_a, read_b, lib_load, compute, write_c
 
-  printf("perfect_tiling,%lli,%li,%li,%li,%li,%li,%li\n", dump,
-         (headers - start) / CLOCKS_PER_SEC,
-         (read_a - headers) / CLOCKS_PER_SEC,
-         (read_b - read_a) / CLOCKS_PER_SEC, (read_b - read_b) / CLOCKS_PER_SEC,
-         (compute - read_b) / CLOCKS_PER_SEC,
-         (write_c - compute) / CLOCKS_PER_SEC);
+  printf("perfect_tiling,%lli,%f,%f,%f,%f,%f,%f\n", dump,
+         (double)(headers - start) / CLOCKS_PER_SEC,
+         (double)(read_a - headers) / CLOCKS_PER_SEC,
+         (double)(read_b - read_a) / CLOCKS_PER_SEC,
+         (double)(read_b - read_b) / CLOCKS_PER_SEC,
+         (double)(compute - read_b) / CLOCKS_PER_SEC,
+         (double)(write_c - compute) / CLOCKS_PER_SEC);
 #endif
   return 0;
 }

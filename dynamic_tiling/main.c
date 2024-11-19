@@ -134,9 +134,15 @@ int main(int argc, char **argv) {
   free(C);
 
 #ifdef INSTRUMENT
-	// Impl, matrix, header, read_a, read_b, lib_load, compute, write_c
+  // Impl, matrix, header, read_a, read_b, lib_load, compute, write_c
 
-	printf("dynamic_tiling,%llu,%li,%li,%li,%li,%li,%li\n", na, (headers - start) / CLOCKS_PER_SEC, (read_a - headers) / CLOCKS_PER_SEC, (read_b - read_a) / CLOCKS_PER_SEC, (lib_load - read_b) / CLOCKS_PER_SEC, (compute - lib_load) / CLOCKS_PER_SEC, (write_c - compute) / CLOCKS_PER_SEC);
+  printf("dynamic_tiling,%llu,%f,%f,%f,%f,%f,%f\n", na,
+         (double)(headers - start) / CLOCKS_PER_SEC,
+         (double)(read_a - headers) / CLOCKS_PER_SEC,
+         (double)(read_b - read_a) / CLOCKS_PER_SEC,
+         (double)(lib_load - read_b) / CLOCKS_PER_SEC,
+         (double)(compute - lib_load) / CLOCKS_PER_SEC,
+         (double)(write_c - compute) / CLOCKS_PER_SEC);
 #endif
   return 0;
 }
