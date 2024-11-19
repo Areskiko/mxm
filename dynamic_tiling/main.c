@@ -11,8 +11,6 @@
 #include <time.h>
 #endif
 
-// #define PRINT_MATRIX
-
 #define CMD_LENGTH 512
 
 int main(int argc, char **argv) {
@@ -138,7 +136,7 @@ int main(int argc, char **argv) {
 #ifdef INSTRUMENT
 	// Impl, matrix, header, read_a, read_b, lib_load, compute, write_c
 
-	printf("dynamic_tiling,%llu,%li,%li,%li,%li,%li,%li\n", na, headers - start, read_a - headers, read_b - read_a, lib_load - read_b, compute - lib_load, write_c - compute);
+	printf("dynamic_tiling,%llu,%li,%li,%li,%li,%li,%li\n", na, (headers - start) / CLOCKS_PER_SEC, (read_a - headers) / CLOCKS_PER_SEC, (read_b - read_a) / CLOCKS_PER_SEC, (lib_load - read_b) / CLOCKS_PER_SEC, (compute - lib_load) / CLOCKS_PER_SEC, (write_c - compute) / CLOCKS_PER_SEC);
 #endif
   return 0;
 }

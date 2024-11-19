@@ -12,8 +12,6 @@
 #include <time.h>
 #endif
 
-// #define PRINT_MATRIX
-
 #define CMD_LENGTH 512
 
 #ifndef N
@@ -115,9 +113,12 @@ int main(int argc, char **argv) {
 #ifdef INSTRUMENT
   // Impl, header, read_a, read_b, lib_load, compute, write_c
 
-  printf("perfect_tiling,%lli,%li,%li,%li,%li,%li,%li\n", dump, headers - start,
-         read_a - headers, read_b - read_a, read_b - read_b, compute - read_b,
-         write_c - compute);
+  printf("perfect_tiling,%lli,%li,%li,%li,%li,%li,%li\n", dump,
+         (headers - start) / CLOCKS_PER_SEC,
+         (read_a - headers) / CLOCKS_PER_SEC,
+         (read_b - read_a) / CLOCKS_PER_SEC, (read_b - read_b) / CLOCKS_PER_SEC,
+         (compute - read_b) / CLOCKS_PER_SEC,
+         (write_c - compute) / CLOCKS_PER_SEC);
 #endif
   return 0;
 }
