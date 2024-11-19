@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
   }
 
 #ifdef INSTRUMENT
-  time_t start = time(NULL);
+  clock_t start = clock();
 #endif
 
   DATA_TYPE *A, *B;
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
   fread(&nb, sizeof(HEADER_TYPE), 1, fb);
 
 #ifdef INSTRUMENT
-  time_t headers = time(NULL);
+  clock_t headers = clock();
 #endif
 
   if (na != nb) {
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
   fclose(fa);
 
 #ifdef INSTRUMENT
-  time_t read_a = time(NULL);
+  clock_t read_a = clock();
 #endif
 
 #ifdef PRINT_MATRIX
@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
   fclose(fb);
 
 #ifdef INSTRUMENT
-  time_t read_b = time(NULL);
+  clock_t read_b = clock();
 #endif
 
 #ifdef PRINT_MATRIX
@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
 
   DATA_TYPE *C = mxm(A, B);
 #ifdef INSTRUMENT
-  time_t compute = time(NULL);
+  clock_t compute = clock();
 #endif
 
 #ifdef PRINT_MATRIX
@@ -103,7 +103,7 @@ int main(int argc, char **argv) {
   fflush(fc);
 
 #ifdef INSTRUMENT
-  time_t write_c = time(NULL);
+  clock_t write_c = clock();
 #endif
 
   free(A);
