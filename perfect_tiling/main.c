@@ -10,6 +10,7 @@
 
 #ifdef INSTRUMENT
 #include <time.h>
+struct timespec start, headers, read_a, read_b, lib_load, compute, write_c;
 #endif
 
 #define CMD_LENGTH 512
@@ -28,7 +29,7 @@ int main(int argc, char **argv) {
   }
 
 #ifdef INSTRUMENT
-  clock_t start = clock();
+  clock_gettime(CLOCK_MONOTONIC, &start);
 #endif
 
   DATA_TYPE *A, *B;
@@ -40,7 +41,7 @@ int main(int argc, char **argv) {
   fread(&dump, sizeof(HEADER_TYPE), 1, fb);
 
 #ifdef INSTRUMENT
-  clock_t headers = clock();
+  clock_gettime(CLOCK_MONOTONIC, &headers);
 #endif
 
   A = malloc(NN * sizeof(DATA_TYPE));
@@ -48,7 +49,7 @@ int main(int argc, char **argv) {
   fclose(fa);
 
 #ifdef INSTRUMENT
-  clock_t read_a = clock();
+  clock_gettime(CLOCK_MONOTONIC, &read_a);
 #endif
 
 #ifdef PRINT_MATRIX
@@ -67,7 +68,7 @@ int main(int argc, char **argv) {
   fclose(fb);
 
 #ifdef INSTRUMENT
-  clock_t read_b = clock();
+  clock_gettime(CLOCK_MONOTONIC, &read_b);
 #endif
 
 #ifdef PRINT_MATRIX
@@ -83,7 +84,7 @@ int main(int argc, char **argv) {
 
   DATA_TYPE *C = mxm(A, B);
 #ifdef INSTRUMENT
-  clock_t compute = clock();
+  clock_gettime(CLOCK_MONOTONIC, &compute);
 #endif
 
 #ifdef PRINT_MATRIX
@@ -103,7 +104,7 @@ int main(int argc, char **argv) {
   fflush(fc);
 
 #ifdef INSTRUMENT
-  clock_t write_c = clock();
+  clock_gettime(CLOCK_MONOTONIC, &write_c);
 #endif
 
   free(A);
@@ -113,13 +114,20 @@ int main(int argc, char **argv) {
 #ifdef INSTRUMENT
   // Impl, header, read_a, read_b, lib_load, compute, write_c
 
+#define NANO 1000000000.0
   printf("perfect_tiling,%lli,%f,%f,%f,%f,%f,%f\n", dump,
-         (double)(headers - start) / CLOCKS_PER_SEC,
-         (double)(read_a - headers) / CLOCKS_PER_SEC,
-         (double)(read_b - read_a) / CLOCKS_PER_SEC,
-         (double)(read_b - read_b) / CLOCKS_PER_SEC,
-         (double)(compute - read_b) / CLOCKS_PER_SEC,
-         (double)(write_c - compute) / CLOCKS_PER_SEC);
+         (headers.tv_sec - start.tv_sec) +
+             ((headers.tv_nsec - start.tv_nsec) / NANO),
+         (read_a.tv_sec - headers.tv_sec) +
+             ((read_a.tv_nsec - headers.tv_nsec) / NANO),
+         (read_b.tv_sec - read_a.tv_sec) +
+             ((read_b.tv_nsec - read_a.tv_nsec) / NANO),
+         (read_b.tv_sec - read_b.tv_sec) +
+             ((read_b.tv_nsec - read_b.tv_nsec) / NANO),
+         (compute.tv_sec - read_b.tv_sec) +
+             ((compute.tv_nsec - read_b.tv_nsec) / NANO),
+         (write_c.tv_sec - compute.tv_sec) +
+             ((write_c.tv_nsec - compute.tv_nsec) / NANO));
 #endif
   return 0;
 }

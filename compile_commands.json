@@ -4,6 +4,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "main",
@@ -18,6 +19,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "main",
@@ -32,34 +34,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-o",
-      "maind",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/naive",
-    "file": "/Users/stefan/projects/personal/mxm/naive/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/naive/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-o",
-      "maind",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/naive",
-    "file": "/Users/stefan/projects/personal/mxm/naive/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/naive/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "main",
@@ -74,20 +49,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-o",
-      "maind",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/dynamic_naive",
-    "file": "/Users/stefan/projects/personal/mxm/dynamic_naive/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/dynamic_naive/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "main",
@@ -102,6 +64,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "main",
@@ -116,34 +79,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-o",
-      "maind",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/tiling",
-    "file": "/Users/stefan/projects/personal/mxm/tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/tiling/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-o",
-      "maind",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/tiling",
-    "file": "/Users/stefan/projects/personal/mxm/tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/tiling/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "main",
@@ -158,20 +94,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-o",
-      "maind",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/dynamic_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/dynamic_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/dynamic_tiling/maind"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=128",
       "-o",
@@ -187,6 +110,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=128",
       "-o",
@@ -202,6 +126,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=256",
       "-o",
@@ -217,6 +142,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=256",
       "-o",
@@ -232,6 +158,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=512",
       "-o",
@@ -247,6 +174,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=512",
       "-o",
@@ -262,6 +190,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=1024",
       "-o",
@@ -277,6 +206,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=1024",
       "-o",
@@ -292,6 +222,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=2048",
       "-o",
@@ -307,6 +238,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=2048",
       "-o",
@@ -322,6 +254,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=4096",
       "-o",
@@ -337,6 +270,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=4096",
       "-o",
@@ -352,6 +286,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=8192",
       "-o",
@@ -367,6 +302,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=8192",
       "-o",
@@ -382,6 +318,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=16384",
       "-o",
@@ -397,6 +334,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=16384",
       "-o",
@@ -412,306 +350,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
-      "-O3",
-      "-DN=32768",
-      "-o",
-      "main_32768",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/main_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-O3",
-      "-DN=32768",
-      "-o",
-      "main_32768",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/main_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=128",
-      "-o",
-      "maind_128",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_128"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=128",
-      "-o",
-      "maind_128",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_128"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=256",
-      "-o",
-      "maind_256",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_256"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=256",
-      "-o",
-      "maind_256",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_256"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=512",
-      "-o",
-      "maind_512",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_512"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=512",
-      "-o",
-      "maind_512",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_512"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=1024",
-      "-o",
-      "maind_1024",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_1024"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=1024",
-      "-o",
-      "maind_1024",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_1024"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=2048",
-      "-o",
-      "maind_2048",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_2048"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=2048",
-      "-o",
-      "maind_2048",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_2048"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=4096",
-      "-o",
-      "maind_4096",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_4096"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=4096",
-      "-o",
-      "maind_4096",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_4096"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=8192",
-      "-o",
-      "maind_8192",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_8192"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=8192",
-      "-o",
-      "maind_8192",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_8192"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=16384",
-      "-o",
-      "maind_16384",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_16384"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=16384",
-      "-o",
-      "maind_16384",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_16384"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=32768",
-      "-o",
-      "maind_32768",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=32768",
-      "-o",
-      "maind_32768",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/lto_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/lto_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/lto_tiling/maind_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=128",
       "-o",
@@ -727,6 +366,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=128",
       "-o",
@@ -742,6 +382,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=256",
       "-o",
@@ -757,6 +398,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=256",
       "-o",
@@ -772,6 +414,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=512",
       "-o",
@@ -787,6 +430,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=512",
       "-o",
@@ -802,6 +446,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=1024",
       "-o",
@@ -817,6 +462,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=1024",
       "-o",
@@ -832,6 +478,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=2048",
       "-o",
@@ -847,6 +494,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=2048",
       "-o",
@@ -862,6 +510,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=4096",
       "-o",
@@ -877,6 +526,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=4096",
       "-o",
@@ -892,6 +542,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=8192",
       "-o",
@@ -907,6 +558,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=8192",
       "-o",
@@ -922,6 +574,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=16384",
       "-o",
@@ -937,6 +590,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-DN=16384",
       "-o",
@@ -952,306 +606,7 @@
       "/usr/bin/clang",
       "-c",
       "-I/Users/stefan/projects/personal/mxm/include",
-      "-O3",
-      "-DN=32768",
-      "-o",
-      "main_32768",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/main_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-O3",
-      "-DN=32768",
-      "-o",
-      "main_32768",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/main_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=128",
-      "-o",
-      "maind_128",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_128"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=128",
-      "-o",
-      "maind_128",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_128"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=256",
-      "-o",
-      "maind_256",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_256"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=256",
-      "-o",
-      "maind_256",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_256"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=512",
-      "-o",
-      "maind_512",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_512"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=512",
-      "-o",
-      "maind_512",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_512"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=1024",
-      "-o",
-      "maind_1024",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_1024"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=1024",
-      "-o",
-      "maind_1024",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_1024"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=2048",
-      "-o",
-      "maind_2048",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_2048"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=2048",
-      "-o",
-      "maind_2048",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_2048"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=4096",
-      "-o",
-      "maind_4096",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_4096"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=4096",
-      "-o",
-      "maind_4096",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_4096"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=8192",
-      "-o",
-      "maind_8192",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_8192"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=8192",
-      "-o",
-      "maind_8192",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_8192"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=16384",
-      "-o",
-      "maind_16384",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_16384"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=16384",
-      "-o",
-      "maind_16384",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_16384"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=32768",
-      "-o",
-      "maind_32768",
-      "main.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/main.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
-      "-g",
-      "-DN=32768",
-      "-o",
-      "maind_32768",
-      "mxm.c"
-    ],
-    "directory": "/Users/stefan/projects/personal/mxm/perfect_tiling",
-    "file": "/Users/stefan/projects/personal/mxm/perfect_tiling/mxm.c",
-    "output": "/Users/stefan/projects/personal/mxm/perfect_tiling/maind_32768"
-  },
-  {
-    "arguments": [
-      "/usr/bin/clang",
-      "-c",
-      "-I/Users/stefan/projects/personal/mxm/include",
+      "-DINSTRUMENT",
       "-O3",
       "-o",
       "mg",
